@@ -1,0 +1,19 @@
+{
+    "name": "alexn/bx.jwt",
+    "description": "JWT tokens for Bitrix app",
+    "type": "bitrix-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexander Nesterov",
+            "email": "alex19pov31@gmail.com"
+        }
+    ],
+    "require": {},
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@cvs.beta.agency:nesterov/bx.model.git"
+        }
+    ]
+}
