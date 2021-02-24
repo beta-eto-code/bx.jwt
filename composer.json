@@ -1,5 +1,5 @@
 {
-    "name": "alexn/bx.jwt",
+    "name": "beta/bx.jwt",
     "description": "JWT tokens for Bitrix app",
     "type": "bitrix-module",
     "license": "MIT",
@@ -9,7 +9,10 @@
             "email": "alex19pov31@gmail.com"
         }
     ],
-    "require": {},
+    "minimum-stability": "dev",
+    "require": {
+        "beta/bx.model": "dev-master"
+    },
     "repositories": [
         {
             "type": "vcs",
