@@ -12,11 +12,5 @@
     "minimum-stability": "dev",
     "require": {
         "beta/bx.model": "dev-master"
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@cvs.beta.agency:nesterov/bx.model.git"
-        }
-    ]
+    }
 }
