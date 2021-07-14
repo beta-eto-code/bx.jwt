@@ -9,8 +9,7 @@
             "email": "alex19pov31@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
-        "beta/bx.model": "dev-master"
+        "beta/bx.model": "^1.0"
     }
 }
