@@ -20,8 +20,8 @@ use Bx\JWT\Strategy\HS256TokenStrategy;
 use Bx\JWT\UserDataPacker;
 use Bx\Model\Services\UserService;
 
-$ttl = (int)Option::get('bora.jwt', 'JWT_TTL', 86400);   // время жизни токена
-$jwtHeader = (string)Option::get('bora.jwt', 'JWT_HTTP_HEADER', 'X-API-Key');
+$ttl = (int)Option::get('bx.jwt', 'JWT_TTL', 86400);   // время жизни токена
+$jwtHeader = (string)Option::get('bx.jwt', 'JWT_HTTP_HEADER', 'X-API-Key');
 $userService = new UserService();
 $userTokenService = new UserTokenService(
     new HS256TokenStrategy(),               // стратегия для подписи токена
