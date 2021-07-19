@@ -80,7 +80,7 @@ class bx_jwt extends CModule
             return true;
         }
 
-        $modulePath = getLocalPath("modules/bx.model/install/install.php");
+        $modulePath = getLocalPath("modules/bx.model/install/index.php");
         if (!$modulePath) {
             $this->setError('Отсутствует модуль bx.model - https://github.com/beta-eto-code/bx.model');
             return false;
