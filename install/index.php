@@ -86,7 +86,7 @@ class bx_jwt extends CModule
             return false;
         }
 
-        require_once $modulePath;
+        require_once $_SERVER['DOCUMENT_ROOT'].$modulePath;
         $moduleInstaller = new bx_model();
         $resultInstall = (bool)$moduleInstaller->DoInstall();
         if (!$resultInstall) {
