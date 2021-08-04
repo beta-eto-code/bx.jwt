@@ -97,15 +97,15 @@ $actionUrl = $APPLICATION->GetCurPage() ."?mid=".urlencode($mid)."&lang=".LANGUA
                 }
 
                 $optionType = $value['type'] ?? 'text';
-                if ($optionType === 'file') {
-                    $file = $value['file'];
-                    if ($file) {
-                        echo "<tr><td colspan='2'>";
-                        @include $file;
-                        echo "</td></tr>";
-                    }
-                    continue;
-                }
+//                if ($optionType === 'file') {
+//                    $file = $value['file'];
+//                    if ($file) {
+//                        echo "<tr><td colspan='2'>";
+//                        @include $file;
+//                        echo "</td></tr>";
+//                    }
+//                    continue;
+//                }
 
                 $optionName = $value['name'] ?? null;
                 if (!$optionName) {
