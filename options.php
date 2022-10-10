@@ -19,7 +19,20 @@ $options = [
     [
         'tab' => "JWT",
         'options' => [
-            'JWT_SECRET' => 'Ключ для подписи jwt',
+            'JWT_SECRET' => [
+                'name' => 'JWT_SECRET',
+                'type' => 'textarea',
+                'label' => 'Ключ для подписи jwt',
+                'cols' => 50,
+                'rows' => 10,
+            ],
+            'JWT_PUBLIC_KEY' => [
+                'name' => 'JWT_PUBLIC_KEY',
+                'type' => 'textarea',
+                'label' => 'Публичный ключ',
+                'cols' => 50,
+                'rows' => 10,
+            ],
             'JWT_HTTP_HEADER' => 'Имя заголовка запроса с jwt токеном',
             'JWT_TTL' => 'Время жизни токена (в секундах)',
         ],
@@ -157,7 +170,9 @@ $actionUrl = $APPLICATION->GetCurPage() ."?mid=".urlencode($mid)."&lang=".LANGUA
                             <label class='adm-designed-checkbox-label' for='{$optionName}'></label>
                             ";
                             break;
-
+                        case 'textarea':
+                            echo "<textarea name='{$optionName}' cols='".($value['cols'] ?? 30)."' rows='".($value['rows'] ?? 5)."'>{$optionValue}</textarea>";
+                            break;
                         default:
                             $multiple = (bool) ($value['multiple'] ?? false);
                             if ($multiple) {
