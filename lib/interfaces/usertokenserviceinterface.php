@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Bx\JWT\Interfaces;
 
 use Bx\Model\Interfaces\UserContextInterface;

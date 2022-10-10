@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Bx\JWT;
-
 
 use Bx\JWT\Interfaces\DataPackerInterface;
 use Bx\Model\Models\User;
@@ -35,7 +33,7 @@ class UserDataPacker implements DataPackerInterface
     {
         $this->ttl = $tokenTTL;
         $this->userService = $userService;
-        $this->fnMapperData = $fnMapperData ?? function(User $user) {
+        $this->fnMapperData = $fnMapperData ?? function (User $user) {
             return [
                 'id' => $user->getId(),
                 'name' => $user->getName(),

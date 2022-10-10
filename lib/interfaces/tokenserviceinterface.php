@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Bx\JWT\Interfaces;
-
 
 interface TokenServiceInterface
 {

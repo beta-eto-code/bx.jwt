@@ -7,6 +7,7 @@ use Bx\JWT\Interfaces\TokenContextInterface;
 use Bx\JWT\Interfaces\UserTokenServiceInterface;
 use Bx\JWT\Interfaces\TokenStrategyInterface;
 use Bx\Model\Interfaces\UserContextInterface;
+use Bx\Model\Interfaces\UserServiceInterface;
 use Bx\Model\Services\UserService;
 
 class UserTokenService implements UserTokenServiceInterface
@@ -20,16 +21,15 @@ class UserTokenService implements UserTokenServiceInterface
      */
     private $dataPacker;
     /**
-     * @var UserService
+     * @var UserServiceInterface
      */
     private $userService;
 
     public function __construct(
         TokenStrategyInterface $strategy,
         DataPackerInterface $dataPacker,
-        UserService $userService
-    )
-    {
+        UserServiceInterface $userService
+    ) {
         $this->setStrategy($strategy);
         $this->setDataPacker($dataPacker);
         $this->userService = $userService;

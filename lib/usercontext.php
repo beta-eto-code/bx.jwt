@@ -1,17 +1,17 @@
 <?php
 
-
 namespace Bx\JWT;
-
 
 use Bitrix\Main\ArgumentException;
 use Bitrix\Main\ObjectPropertyException;
 use Bitrix\Main\SystemException;
 use Bx\JWT\Interfaces\UserJWTContextInterface;
 use Bx\Model\Interfaces\AccessStrategyInterface;
+use Bx\Model\Interfaces\UserServiceInterface;
 use Bx\Model\Models\User;
 use Bx\JWT\Interfaces\TokenContextInterface;
 use Bx\Model\Services\UserService;
+use Exception;
 
 class UserContext implements UserJWTContextInterface
 {
@@ -24,7 +24,7 @@ class UserContext implements UserJWTContextInterface
      */
     private $user;
     /**
-     * @var UserService
+     * @var UserServiceInterface
      */
     private $userService;
     /**
@@ -37,7 +37,7 @@ class UserContext implements UserJWTContextInterface
      * @param TokenContextInterface $context
      * @param UserService $userService
      */
-    public function __construct(TokenContextInterface $context, UserService $userService)
+    public function __construct(TokenContextInterface $context, UserServiceInterface $userService)
     {
         $this->context = $context;
         $this->userService = $userService;
@@ -48,6 +48,7 @@ class UserContext implements UserJWTContextInterface
      * @throws ArgumentException
      * @throws ObjectPropertyException
      * @throws SystemException
+     * @throws Exception
      */
     public function getUser(): User
     {
@@ -55,7 +56,16 @@ class UserContext implements UserJWTContextInterface
             return $this->user;
         }
 
-        return $this->user = $this->userService->getById($this->getUserId());
+        $user = $this->userService->getById($this->getUserId());
+        if (empty($user)) {
+            throw new Exception('user is not found');
+        }
+
+        if (!($user instanceof User)) {
+            throw new Exception('invalid user model, excepted Bx\Model\Models\User');
+        }
+
+        return $this->user = $user;
     }
 
     /**
