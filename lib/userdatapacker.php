@@ -3,6 +3,7 @@
 namespace Bx\JWT;
 
 use Bx\JWT\Interfaces\DataPackerInterface;
+use Bx\Model\Interfaces\UserServiceInterface;
 use Bx\Model\Models\User;
 use Bx\Model\Services\UserService;
 use Closure;
@@ -29,7 +30,7 @@ class UserDataPacker implements DataPackerInterface
      * @param UserService $userService
      * @param callable|null $fnMapperData
      */
-    public function __construct(int $tokenTTL, UserService $userService, callable $fnMapperData = null)
+    public function __construct(int $tokenTTL, UserServiceInterface $userService, callable $fnMapperData = null)
     {
         $this->ttl = $tokenTTL;
         $this->userService = $userService;
