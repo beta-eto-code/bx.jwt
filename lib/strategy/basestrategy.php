@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Bx\JWT\Strategy;
-
 
 use Bitrix\Main\Config\Option;
 use Bx\JWT\Interfaces\TokenStrategyInterface;

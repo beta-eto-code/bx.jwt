@@ -7,9 +7,9 @@ use Bx\JWT\Interfaces\DataPackerInterface;
 use Bx\JWT\Interfaces\TokenContextInterface;
 use Bx\JWT\TokenContext;
 
-class HS256TokenStrategy extends BaseStrategy
+class RS256TokenStrategy extends BaseStrategy
 {
-    private const ALG = 'HS256';
+    private const ALG = 'RS256';
 
     public function read(string $token): TokenContextInterface
     {
@@ -17,11 +17,6 @@ class HS256TokenStrategy extends BaseStrategy
         return new TokenContext($token, (array)$jwt);
     }
 
-    /**
-     * @param $uid
-     * @param DataPackerInterface $dataPacker
-     * @return TokenContextInterface
-     */
     public function create($uid, DataPackerInterface $dataPacker): TokenContextInterface
     {
         $data = $dataPacker->getData($uid);
@@ -29,4 +24,3 @@ class HS256TokenStrategy extends BaseStrategy
         return new TokenContext($token, $data);
     }
 }
-
