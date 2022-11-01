@@ -78,15 +78,16 @@ class UserContext implements UserJWTContextInterface
 
     /**
      * @param int $operationId
+     * @param string $scope
      * @return bool
      * @throws ArgumentException
      * @throws ObjectPropertyException
      * @throws SystemException
      */
-    public function hasAccessOperation(int $operationId): bool
+    public function hasAccessOperation(int $operationId, string $scope = ''): bool
     {
         if ($this->accessStrategy instanceof AccessStrategyInterface) {
-            return $this->accessStrategy->checkAccess($this->getUser(), $operationId);
+            return $this->accessStrategy->checkAccess($this->getUser(), $operationId, $scope);
         }
 
         return true;
