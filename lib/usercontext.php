@@ -33,6 +33,11 @@ class UserContext implements UserJWTContextInterface
     private $accessStrategy;
 
     /**
+     * @var array
+     */
+    private $params;
+
+    /**
      * UserContext constructor.
      * @param TokenContextInterface $context
      * @param UserService $userService
@@ -41,6 +46,7 @@ class UserContext implements UserJWTContextInterface
     {
         $this->context = $context;
         $this->userService = $userService;
+        $this->params = [];
     }
 
     /**
@@ -107,5 +113,20 @@ class UserContext implements UserJWTContextInterface
     public function setAccessStrategy(AccessStrategyInterface $accessStrategy)
     {
         $this->accessStrategy = $accessStrategy;
+    }
+
+    public function getParam(string $key)
+    {
+        return $this->params[$key] ?? $key;
+    }
+
+    /**
+     * @param string $key
+     * @param mixed $value
+     * @return void
+     */
+    public function setParam(string $key, $value): void
+    {
+        $this->params[$key] = $value;
     }
 }
